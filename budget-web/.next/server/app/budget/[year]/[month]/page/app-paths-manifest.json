@@ -1,0 +1,3 @@
+{
+  "/budget/[year]/[month]/page": "app/budget/[year]/[month]/page.js"
+}
