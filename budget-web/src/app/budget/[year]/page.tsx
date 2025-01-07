@@ -27,25 +27,23 @@ interface monthly {
   spend: number;
 }
 
-export default function Budget() {
+interface BudgetPageProps {
+  params: Promise<{ year: number }>;
+}
+
+export default function Budget({ params }: BudgetPageProps) {
     const router = useRouter();
-    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
+    const { year } = React.use(params);
+    const [selectedYear, setSelectedYear] = useState(year)
     const [transactionData,setTransactionData] = useState<transaction[]>([])
     const [yearlyBudget,setYearlyBudget] = useState<budget[]>([])
     const [monthlyBudget,setMonthlyBudget] = useState<monthly[]>([])
 
-    const searchParams = useSearchParams();
-    useEffect(() => {
-      const yearParam = searchParams.get('year');
-      const year = yearParam ? parseInt(yearParam, 10) : new Date().getFullYear(); 
-      if (!isNaN(year)) {
-        setSelectedYear(year); 
-      }
-    }, [searchParams]);
+    
     const transactions_endpoint = "http://127.0.0.1:1000/get-transactions"
 
     const handleViewDetails = (month: string, year:number) => {
-      router.push(`/budget/${month}?year=${year}`);
+      router.push(`/budget/${year}/${month}?year=${year}`);
     };
 
     const get_transactions = async () => {

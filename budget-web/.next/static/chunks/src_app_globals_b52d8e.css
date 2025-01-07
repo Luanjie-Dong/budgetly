@@ -2434,11 +2434,6 @@ body {
   background-color: rgb(107 114 128 / var(--tw-bg-opacity, 1));
 }
 
-.bg-gray-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
-}
-
 .bg-green-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity, 1));
@@ -2563,11 +2558,6 @@ body {
 .bg-yellow-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity, 1));
-}
-
-.bg-gray-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-50 {
@@ -3091,11 +3081,6 @@ body {
 
 .text-foreground\/50 {
   color: hsl(var(--foreground) / .5);
-}
-
-.text-gray-300 {
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
 }
 
 .text-gray-500 {

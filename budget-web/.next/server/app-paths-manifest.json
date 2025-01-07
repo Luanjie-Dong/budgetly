@@ -1,5 +1,10 @@
 {
   "/page": "app/page.js",
   "/budget/page": "app/budget/page.js",
-  "/budget/[month]/page": "app/budget/[month]/page.js"
+  "/budget/[month]/page": "app/budget/[month]/page.js",
+  "/[budget]/page": "app/[budget]/page.js",
+  "/[budget]/[month]/page": "app/[budget]/[month]/page.js",
+  "/budget/[budget]/page": "app/budget/[budget]/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/budget/[year]/page": "app/budget/[year]/page.js"
 }

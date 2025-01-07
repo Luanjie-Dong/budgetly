@@ -20,7 +20,7 @@ export function Navbar({ className }: { className?: string }) {
         {years.map((year,index) =>(
           <ProductItem
           title={year}
-          href={`/budget?year=${year}`}
+          href={`/budget/${year}`}
           description=""
           key = {index}
         />
