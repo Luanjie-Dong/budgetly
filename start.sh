@@ -8,7 +8,7 @@ BACKEND_PID=$!
 
 # Start frontend
 echo "Starting frontend..."
-cd ../my-budget || { echo "Frontend directory not found!"; exit 1; }
+cd ../budget-web || { echo "Frontend directory not found!"; exit 1; }
 npm run dev &
 FRONTEND_PID=$!
 
