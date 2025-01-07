@@ -16,7 +16,7 @@ export function Navbar({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={null} item="Overview" url="/">
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Budgets" url="/budget">
+        <MenuItem setActive={setActive} active={active} item="Budgets" url="/budget/2025">
         {years.map((year,index) =>(
           <ProductItem
           title={year}
