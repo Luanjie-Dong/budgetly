@@ -63,8 +63,8 @@ export default function Month({ params }: MonthPageProps) {
     const transactions_endpoint = "http://127.0.0.1:1000/get-transactions"
     const update_endpoint = "http://127.0.0.1:1000/modify-transactions"
     const searchParams = useSearchParams();
-    const types = process.env.REACT_APP_SPENDING_TYPES?.split(',') || [];
-    const categories = process.env.REACT_APP_SPENDING_CATEGORIES?.split(',') || [];
+    const categories = process.env.NEXT_PUBLIC_SPENDING_CATEGORIES?.split(',') || [];
+    const types = process.env.NEXT_PUBLIC_SPENDING_TYPES?.split(',') || [];
     const monthNames = [
       "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"

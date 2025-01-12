@@ -479,30 +479,8 @@ function Month({ params }) {
     const transactions_endpoint = "http://127.0.0.1:1000/get-transactions";
     const update_endpoint = "http://127.0.0.1:1000/modify-transactions";
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSearchParams"])();
-    const types = [
-        "Food",
-        "Others",
-        "Ignore",
-        "Transportation",
-        "Shopping",
-        "GF",
-        "Phone Bill",
-        "Health",
-        "Car Rental",
-        "Travel",
-        "Singlife",
-        "Stashaway",
-        "Tiger Broker",
-        "Job",
-        "Parent"
-    ];
-    const categories = [
-        "Spending",
-        "Income",
-        "Offset",
-        "Saving",
-        "Ignore"
-    ];
+    const categories = ("TURBOPACK compile-time value", "Spending,Income,Offset,Saving,Ignore")?.split(',') || [];
+    const types = ("TURBOPACK compile-time value", "Food,Others,Ignore,Transportation,Shopping,GF,Phone Bill,Health,Car Rental,Travel,Singlife,Stashaway,Tiger Broker,Job,Parent")?.split(',') || [];
     const monthNames = [
         "January",
         "February",

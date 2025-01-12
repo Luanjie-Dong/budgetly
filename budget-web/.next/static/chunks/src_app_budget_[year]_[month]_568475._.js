@@ -469,6 +469,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$budget$2f5b$ye
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$budget$2f5b$year$5d2f5b$month$5d2f$transaction$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/budget/[year]/[month]/transaction.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$budget$2f5b$year$5d2f5b$month$5d2f$chart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/budget/[year]/[month]/chart.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_import__("[project]/node_modules/chart.js/dist/chart.js [app-client] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-chartjs-2/dist/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_refresh__.signature();
@@ -496,30 +497,8 @@ function Month({ params }) {
     const transactions_endpoint = "http://127.0.0.1:1000/get-transactions";
     const update_endpoint = "http://127.0.0.1:1000/modify-transactions";
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
-    const types = [
-        "Food",
-        "Others",
-        "Ignore",
-        "Transportation",
-        "Shopping",
-        "GF",
-        "Phone Bill",
-        "Health",
-        "Car Rental",
-        "Travel",
-        "Singlife",
-        "Stashaway",
-        "Tiger Broker",
-        "Job",
-        "Parent"
-    ];
-    const categories = [
-        "Spending",
-        "Income",
-        "Offset",
-        "Saving",
-        "Ignore"
-    ];
+    const categories = ("TURBOPACK compile-time value", "Spending,Income,Offset,Saving,Ignore")?.split(',') || [];
+    const types = ("TURBOPACK compile-time value", "Food,Others,Ignore,Transportation,Shopping,GF,Phone Bill,Health,Car Rental,Travel,Singlife,Stashaway,Tiger Broker,Job,Parent")?.split(',') || [];
     const monthNames = [
         "January",
         "February",
