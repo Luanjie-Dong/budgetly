@@ -21,9 +21,9 @@ import { generateChartData } from "./chart";
 ChartJS.register(RadialLinearScale, ArcElement, CategoryScale,LinearScale,BarElement,Tooltip, Legend, ChartDataLabels);
 
 interface transaction{
-    category:string,
+    Category:string,
     Information:string,
-    type:string,
+    Type:string,
     date: Date,
     recieve: number,
     spend:number
@@ -60,8 +60,7 @@ export default function Month({ params }: MonthPageProps) {
     const [currentData,setCurrentData] = useState<transaction[]>([])
     const { month } = React.use(params);
     const currentMonth = decodeURIComponent(month)
-    const transactions_endpoint = "http://127.0.0.1:1000/get-transactions"
-    const update_endpoint = "http://127.0.0.1:1000/modify-transactions"
+    const transactions_endpoint = "http://127.0.0.1:1000/transactions"
     const searchParams = useSearchParams();
     const categories = process.env.NEXT_PUBLIC_SPENDING_CATEGORIES?.split(',') || [];
     const types = process.env.NEXT_PUBLIC_SPENDING_TYPES?.split(',') || [];
@@ -150,8 +149,8 @@ export default function Month({ params }: MonthPageProps) {
               )
           );
   
-          const response = await fetch(update_endpoint, {
-              method: "POST",
+          const response = await fetch(`${transactions_endpoint}`, {
+              method: "PUT",
               headers: {
                   "Content-Type": "application/json",
               },
@@ -178,19 +177,19 @@ export default function Month({ params }: MonthPageProps) {
 
   useEffect(() => {
     const total_spend = currentData.reduce((total, item) => {
-      return item.category === "Spending" ? total + item.spend : total;
+      return item.Category === "Spending" ? total + item.spend : total;
     }, 0);
     
     const total_receive = currentData.reduce((total, item) => {
-      return item.category === "Income" ? total + item.recieve : total;
+      return item.Category === "Income" ? total + item.recieve : total;
     }, 0);
 
     const total_offset= currentData.reduce((total, item) => {
-      return item.category === "Offset" ? total + item.recieve : total;
+      return item.Category === "Offset" ? total + item.recieve : total;
     }, 0);
 
     const total_saving= currentData.reduce((total, item) => {
-      return item.category === "Saving" ? total + item.spend : total;
+      return item.Category === "Saving" ? total + item.spend : total;
     }, 0);
 
     const total_balance = total_receive - (total_spend - total_offset) - total_saving
@@ -265,10 +264,10 @@ export default function Month({ params }: MonthPageProps) {
               {currentData
                 .filter((transaction) => {
                   const matchesCategory = selectedCategory
-                    ? transaction.category === selectedCategory
+                    ? transaction.Category === selectedCategory
                     : true;
                   const matchesType = selectedType
-                    ? transaction.type === selectedType
+                    ? transaction.Type === selectedType
                     : true;
                   return matchesCategory && matchesType;
                 })
@@ -303,7 +302,7 @@ export default function Month({ params }: MonthPageProps) {
                           Receive: ${information.totalReceive.toFixed(2)}
                         </p>
                       </div>
-                      {information.transactions.some((transaction) => !transaction.category || !transaction.type) && (
+                      {information.transactions.some((transaction) => !transaction.Category || !transaction.Type) && (
                         <p className="text-sm text-gray-600 mt-2">
                           <i className="fas fa-exclamation-circle text-yellow-500"></i> Some transactions are missing a category or type.
                         </p>

@@ -23,8 +23,7 @@ export default function Home() {
   const [isModalFinance,setModalFinance] = useState("")
   const [isModalAmount,setModalAmount] = useState(0)
 
-  const overview_endpoint = "http://127.0.0.1:1000/get-overview"
-  const overview_update = "http://127.0.0.1:1000/modify-overview"
+  const overview_endpoint = "http://127.0.0.1:1000/overview"
   const total = overviewData.reduce((sum,item) => sum + item.amount,0);
 
   const fetchData = async () => {
@@ -48,8 +47,8 @@ export default function Home() {
 
   const update_finance = async () => {
     try {
-      const response = await fetch(overview_update, {
-        method: 'POST',
+      const response = await fetch(overview_endpoint, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },

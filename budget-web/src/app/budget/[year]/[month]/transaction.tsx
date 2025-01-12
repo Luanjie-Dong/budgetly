@@ -1,7 +1,7 @@
 interface Transaction {
-    category: string;
+    Category: string;
     Information: string;
-    type: string;
+    Type: string;
     date: Date;
     recieve: number;
     spend: number;
@@ -22,7 +22,7 @@ interface Transaction {
         <div
         key={index}
         className={`rounded-lg p-4 shadow hover:shadow-lg transition my-4 ${
-            !transaction.category || !transaction.type ? "bg-yellow-50" : "bg-white dark:bg-gray-700"
+            !transaction.Category || !transaction.Type ? "bg-yellow-50" : "bg-white dark:bg-gray-700"
         }`}
         >
         <div className="flex flex-wrap md:flex-nowrap items-center gap-4 justify-center">
@@ -40,16 +40,16 @@ interface Transaction {
                 Category
             </label>
             <select
-                value={transaction.category || ""}
+                value={transaction.Category || ""}
                 onChange={(e) =>
-                handleUpdate(transaction.key, "category", e.target.value)
+                handleUpdate(transaction.key, "Category", e.target.value)
                 }
                 className={`mt-1 block w-full px-3 py-1.5 text-gray-800 dark:text-gray-300 rounded-md ${
-                transaction.category === "Spending"
+                transaction.Category === "Spending"
                     ? "bg-red-400 dark:bg-red-600"
-                    : transaction.category === "Income"
+                    : transaction.Category === "Income"
                     ? "bg-green-400 dark:bg-green-600"
-                    : transaction.category === "Saving"
+                    : transaction.Category === "Saving"
                     ? "bg-blue-400 dark:bg-blue-600"
                     : "bg-gray-100 dark:bg-gray-700"
                 }`}
@@ -65,9 +65,9 @@ interface Transaction {
                 Type
             </label>
             <select
-                value={transaction.type || ""}
+                value={transaction.Type || ""}
                 onChange={(e) =>
-                handleUpdate(transaction.key, "type", e.target.value)
+                handleUpdate(transaction.key, "Type", e.target.value)
                 }
                 className="mt-1 block w-full px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-md text-center"
             >

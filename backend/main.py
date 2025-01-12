@@ -70,19 +70,32 @@ def match_data(year):
     data_path = f"data/{year}/{year}_transactions.json"
     data_path2 = f"data/{str(int(year) - 1)}/{str(int(year) - 1)}_transactions.json"
 
+    os.makedirs(os.path.dirname(data_path), exist_ok=True)
+    os.makedirs(os.path.dirname(data_path2), exist_ok=True)
+
+    for path in [data_path, data_path2]:
+        if not os.path.exists(path):
+            with open(path, "w") as file:
+                json.dump([], file)
+
     new_data = import_all_csv(f"data/{year}", year)
-    filter_data = [transaction for transaction in new_data if str(year) in transaction.get("date", "")]
-    crossed_data = [transaction for transaction in new_data if str(year) not in transaction.get("date", "")]
+
+    filter_data = [transaction for transaction in new_data if transaction.get("date", "").startswith(str(year))]
+    crossed_data = [transaction for transaction in new_data if not transaction.get("date", "").startswith(str(year))]
 
     if filter_data:
         new_df1 = pd.DataFrame(filter_data)
-        update1 = update_data(new_df1, data_path)  
+        update1 = update_data(new_df1, data_path)
 
     if crossed_data:
         new_df2 = pd.DataFrame(crossed_data)
-        update2 = update_data(new_df2, data_path2) 
+        update2 = update_data(new_df2, data_path2)
 
 
+    return {
+        "current_year_updates": len(filter_data) if filter_data else 0,
+        "previous_year_updates": len(crossed_data) if crossed_data else 0,
+    }
     
 
 
@@ -93,13 +106,13 @@ def match_data(year):
 
 if __name__ == "__main__":
     months = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"]
-    year = "2023"
+    year = "2024"
     folder_path = f"data/{year}"
 
     
 
     data = import_all_csv(folder_path,year)
-    update = match_data(folder_path,year)
+    update = match_data(year)
 
    
    

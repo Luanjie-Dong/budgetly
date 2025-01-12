@@ -24,7 +24,7 @@ function Budget({ params }) {
     const [transactionData, setTransactionData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [yearlyBudget, setYearlyBudget] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [monthlyBudget, setMonthlyBudget] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const transactions_endpoint = "http://127.0.0.1:1000/get-transactions";
+    const transactions_endpoint = "http://127.0.0.1:1000/transactions";
     const handleViewDetails = (month, year)=>{
         router.push(`/budget/${year}/${month}?year=${year}`);
     };
@@ -73,6 +73,8 @@ function Budget({ params }) {
                 "Budget.useEffect.total_receive": (total, item)=>total + item.recieve
             }["Budget.useEffect.total_receive"], 0);
             const total_balance = total_receive - total_spend;
+            console.log(transactionData);
+            console.log(total_balance);
             setYearlyBudget([
                 {
                     name: "Total Spent",
@@ -113,10 +115,10 @@ function Budget({ params }) {
                             spend: 0
                         };
                     }
-                    if (item.category == "Spending") {
+                    if (item.Category == "Spending") {
                         acc[formattedMonth].spend += item.spend;
                     }
-                    if (item.category == "Income") {
+                    if (item.Category == "Income") {
                         acc[formattedMonth].recieve += item.recieve;
                     }
                     return acc;
@@ -145,7 +147,7 @@ function Budget({ params }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                lineNumber: 141,
+                lineNumber: 144,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -158,7 +160,7 @@ function Budget({ params }) {
                                 children: budget.name
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                lineNumber: 151,
+                                lineNumber: 154,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -169,18 +171,18 @@ function Budget({ params }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                lineNumber: 154,
+                                lineNumber: 157,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, index, true, {
                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                        lineNumber: 147,
+                        lineNumber: 150,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                lineNumber: 145,
+                lineNumber: 148,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -191,7 +193,7 @@ function Budget({ params }) {
                         children: "Monthly Summary"
                     }, void 0, false, {
                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                        lineNumber: 162,
+                        lineNumber: 165,
                         columnNumber: 3
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -204,7 +206,7 @@ function Budget({ params }) {
                                         children: log.month
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                        lineNumber: 172,
+                                        lineNumber: 175,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -216,7 +218,7 @@ function Budget({ params }) {
                                                     "Spend: ",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                        lineNumber: 177,
+                                                        lineNumber: 180,
                                                         columnNumber: 26
                                                     }, this),
                                                     " $",
@@ -224,7 +226,7 @@ function Budget({ params }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                lineNumber: 176,
+                                                lineNumber: 179,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -233,7 +235,7 @@ function Budget({ params }) {
                                                     "Receive:",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                        lineNumber: 180,
+                                                        lineNumber: 183,
                                                         columnNumber: 27
                                                     }, this),
                                                     " $",
@@ -241,7 +243,7 @@ function Budget({ params }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 182,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -250,7 +252,7 @@ function Budget({ params }) {
                                                     "Balance:",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                        lineNumber: 183,
+                                                        lineNumber: 186,
                                                         columnNumber: 27
                                                     }, this),
                                                     " $",
@@ -258,13 +260,13 @@ function Budget({ params }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                lineNumber: 182,
+                                                lineNumber: 185,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                        lineNumber: 175,
+                                        lineNumber: 178,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -276,7 +278,7 @@ function Budget({ params }) {
                                                 children: "View Details"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                lineNumber: 190,
+                                                lineNumber: 193,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -292,41 +294,41 @@ function Budget({ params }) {
                                                     d: "M9 5l7 7-7 7"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                    lineNumber: 199,
+                                                    lineNumber: 202,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                                lineNumber: 191,
+                                                lineNumber: 194,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                        lineNumber: 186,
+                                        lineNumber: 189,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, index, true, {
                                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                                lineNumber: 168,
+                                lineNumber: 171,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/app/budget/[year]/page.tsx",
-                        lineNumber: 165,
+                        lineNumber: 168,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/budget/[year]/page.tsx",
-                lineNumber: 161,
+                lineNumber: 164,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/budget/[year]/page.tsx",
-        lineNumber: 139,
+        lineNumber: 142,
         columnNumber: 7
     }, this);
 }

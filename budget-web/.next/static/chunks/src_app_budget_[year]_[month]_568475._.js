@@ -157,7 +157,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 function TransactionBar({ transaction, handleUpdate, index, categories, types }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `rounded-lg p-4 shadow hover:shadow-lg transition my-4 ${!transaction.category || !transaction.type ? "bg-yellow-50" : "bg-white dark:bg-gray-700"}`,
+        className: `rounded-lg p-4 shadow hover:shadow-lg transition my-4 ${!transaction.Category || !transaction.Type ? "bg-yellow-50" : "bg-white dark:bg-gray-700"}`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-wrap md:flex-nowrap items-center gap-4 justify-center",
@@ -204,9 +204,9 @@ function TransactionBar({ transaction, handleUpdate, index, categories, types })
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                value: transaction.category || "",
-                                onChange: (e)=>handleUpdate(transaction.key, "category", e.target.value),
-                                className: `mt-1 block w-full px-3 py-1.5 text-gray-800 dark:text-gray-300 rounded-md ${transaction.category === "Spending" ? "bg-red-400 dark:bg-red-600" : transaction.category === "Income" ? "bg-green-400 dark:bg-green-600" : transaction.category === "Saving" ? "bg-blue-400 dark:bg-blue-600" : "bg-gray-100 dark:bg-gray-700"}`,
+                                value: transaction.Category || "",
+                                onChange: (e)=>handleUpdate(transaction.key, "Category", e.target.value),
+                                className: `mt-1 block w-full px-3 py-1.5 text-gray-800 dark:text-gray-300 rounded-md ${transaction.Category === "Spending" ? "bg-red-400 dark:bg-red-600" : transaction.Category === "Income" ? "bg-green-400 dark:bg-green-600" : transaction.Category === "Saving" ? "bg-blue-400 dark:bg-blue-600" : "bg-gray-100 dark:bg-gray-700"}`,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                         value: "",
@@ -247,8 +247,8 @@ function TransactionBar({ transaction, handleUpdate, index, categories, types })
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                value: transaction.type || "",
-                                onChange: (e)=>handleUpdate(transaction.key, "type", e.target.value),
+                                value: transaction.Type || "",
+                                onChange: (e)=>handleUpdate(transaction.key, "Type", e.target.value),
                                 className: "mt-1 block w-full px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-md text-center",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -323,14 +323,14 @@ __turbopack_esm__({
 });
 const generateChartData = (currentData)=>{
     const groupDataByCategory = (data, targetCategory)=>{
-        const grouped = data.filter((item)=>item.category === targetCategory).reduce((summary, item)=>{
-            if (!summary[item.type]) {
-                summary[item.type] = 0;
+        const grouped = data.filter((item)=>item.Category === targetCategory).reduce((summary, item)=>{
+            if (!summary[item.Type]) {
+                summary[item.Type] = 0;
             }
             if (targetCategory == "Income" || targetCategory == "Offset") {
-                summary[item.type] += item.recieve;
+                summary[item.Type] += item.recieve;
             } else {
-                summary[item.type] += item.spend;
+                summary[item.Type] += item.spend;
             }
             return summary;
         }, {});
@@ -494,8 +494,7 @@ function Month({ params }) {
     const [currentData, setCurrentData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const { month } = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].use(params);
     const currentMonth = decodeURIComponent(month);
-    const transactions_endpoint = "http://127.0.0.1:1000/get-transactions";
-    const update_endpoint = "http://127.0.0.1:1000/modify-transactions";
+    const transactions_endpoint = "http://127.0.0.1:1000/transactions";
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
     const categories = ("TURBOPACK compile-time value", "Spending,Income,Offset,Saving,Ignore")?.split(',') || [];
     const types = ("TURBOPACK compile-time value", "Food,Others,Ignore,Transportation,Shopping,GF,Phone Bill,Health,Car Rental,Travel,Singlife,Stashaway,Tiger Broker,Job,Parent")?.split(',') || [];
@@ -593,8 +592,8 @@ function Month({ params }) {
                         ...transaction,
                         [field]: modify_value
                     } : transaction));
-            const response = await fetch(update_endpoint, {
-                method: "POST",
+            const response = await fetch(`${transactions_endpoint}`, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -619,22 +618,22 @@ function Month({ params }) {
         "Month.useEffect": ()=>{
             const total_spend = currentData.reduce({
                 "Month.useEffect.total_spend": (total, item)=>{
-                    return item.category === "Spending" ? total + item.spend : total;
+                    return item.Category === "Spending" ? total + item.spend : total;
                 }
             }["Month.useEffect.total_spend"], 0);
             const total_receive = currentData.reduce({
                 "Month.useEffect.total_receive": (total, item)=>{
-                    return item.category === "Income" ? total + item.recieve : total;
+                    return item.Category === "Income" ? total + item.recieve : total;
                 }
             }["Month.useEffect.total_receive"], 0);
             const total_offset = currentData.reduce({
                 "Month.useEffect.total_offset": (total, item)=>{
-                    return item.category === "Offset" ? total + item.recieve : total;
+                    return item.Category === "Offset" ? total + item.recieve : total;
                 }
             }["Month.useEffect.total_offset"], 0);
             const total_saving = currentData.reduce({
                 "Month.useEffect.total_saving": (total, item)=>{
-                    return item.category === "Saving" ? total + item.spend : total;
+                    return item.Category === "Saving" ? total + item.spend : total;
                 }
             }["Month.useEffect.total_saving"], 0);
             const total_balance = total_receive - (total_spend - total_offset) - total_saving;
@@ -668,7 +667,7 @@ function Month({ params }) {
                 children: currentMonth
             }, void 0, false, {
                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                lineNumber: 209,
+                lineNumber: 208,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -681,7 +680,7 @@ function Month({ params }) {
                                 children: budget.name
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 218,
+                                lineNumber: 217,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -692,18 +691,18 @@ function Month({ params }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 221,
+                                lineNumber: 220,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, index, true, {
                         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                        lineNumber: 214,
+                        lineNumber: 213,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                lineNumber: 212,
+                lineNumber: 211,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -717,7 +716,7 @@ function Month({ params }) {
                                 children: "Income Breakdown"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 230,
+                                lineNumber: 229,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -729,18 +728,18 @@ function Month({ params }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                    lineNumber: 231,
+                                    lineNumber: 230,
                                     columnNumber: 35
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 231,
+                                lineNumber: 230,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                        lineNumber: 229,
+                        lineNumber: 228,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -751,7 +750,7 @@ function Month({ params }) {
                                 children: "Expense Breakdown"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 236,
+                                lineNumber: 235,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Pie"], {
@@ -760,13 +759,13 @@ function Month({ params }) {
                                 className: ""
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 237,
+                                lineNumber: 236,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                        lineNumber: 235,
+                        lineNumber: 234,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -777,7 +776,7 @@ function Month({ params }) {
                                 children: "Saving Breakdown"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 242,
+                                lineNumber: 241,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Pie"], {
@@ -785,19 +784,19 @@ function Month({ params }) {
                                 options: options
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 243,
+                                lineNumber: 242,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                        lineNumber: 241,
+                        lineNumber: 240,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                lineNumber: 227,
+                lineNumber: 226,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -808,14 +807,14 @@ function Month({ params }) {
                         children: "Transactions"
                     }, void 0, false, {
                         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                        lineNumber: 248,
+                        lineNumber: 247,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
                         className: "mb-4"
                     }, void 0, false, {
                         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                        lineNumber: 251,
+                        lineNumber: 250,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$budget$2f5b$year$5d2f5b$month$5d2f$filter$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -827,15 +826,15 @@ function Month({ params }) {
                         setSelectedType: setSelectedType
                     }, void 0, false, {
                         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                        lineNumber: 252,
+                        lineNumber: 251,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "space-y-4",
                         children: selectedCategory || selectedType ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: currentData.filter((transaction)=>{
-                                const matchesCategory = selectedCategory ? transaction.category === selectedCategory : true;
-                                const matchesType = selectedType ? transaction.type === selectedType : true;
+                                const matchesCategory = selectedCategory ? transaction.Category === selectedCategory : true;
+                                const matchesType = selectedType ? transaction.Type === selectedType : true;
                                 return matchesCategory && matchesType;
                             }).map((transaction, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$budget$2f5b$year$5d2f5b$month$5d2f$transaction$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                     transaction: transaction,
@@ -845,12 +844,12 @@ function Month({ params }) {
                                     types: types
                                 }, index, false, {
                                     fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                    lineNumber: 276,
+                                    lineNumber: 275,
                                     columnNumber: 19
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                            lineNumber: 264,
+                            lineNumber: 263,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: Object.entries(groupedTransactions).length > 0 ? Object.entries(groupedTransactions).map(([day, information])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -868,7 +867,7 @@ function Month({ params }) {
                                                             children: day
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                                            lineNumber: 296,
+                                                            lineNumber: 295,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -879,7 +878,7 @@ function Month({ params }) {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                                            lineNumber: 299,
+                                                            lineNumber: 298,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -890,30 +889,30 @@ function Month({ params }) {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                                            lineNumber: 302,
+                                                            lineNumber: 301,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                                    lineNumber: 295,
+                                                    lineNumber: 294,
                                                     columnNumber: 23
                                                 }, this),
-                                                information.transactions.some((transaction)=>!transaction.category || !transaction.type) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                information.transactions.some((transaction)=>!transaction.Category || !transaction.Type) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "text-sm text-gray-600 mt-2",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                             className: "fas fa-exclamation-circle text-yellow-500"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                                            lineNumber: 308,
+                                                            lineNumber: 307,
                                                             columnNumber: 27
                                                         }, this),
                                                         " Some transactions are missing a category or type."
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                                    lineNumber: 307,
+                                                    lineNumber: 306,
                                                     columnNumber: 25
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -921,13 +920,13 @@ function Month({ params }) {
                                                     children: expandedDays[day] ? "Hide Details" : "View Details"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                                    lineNumber: 311,
+                                                    lineNumber: 310,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                            lineNumber: 291,
+                                            lineNumber: 290,
                                             columnNumber: 21
                                         }, this),
                                         expandedDays?.[day] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -940,47 +939,47 @@ function Month({ params }) {
                                                     types: types
                                                 }, index, false, {
                                                     fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                                    lineNumber: 319,
+                                                    lineNumber: 318,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                            lineNumber: 317,
+                                            lineNumber: 316,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, day, true, {
                                     fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                    lineNumber: 289,
+                                    lineNumber: 288,
                                     columnNumber: 19
                                 }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-center text-lg text-gray-500",
                                 children: "No transactions found for this month."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                                lineNumber: 326,
+                                lineNumber: 325,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                            lineNumber: 287,
+                            lineNumber: 286,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                        lineNumber: 261,
+                        lineNumber: 260,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-                lineNumber: 247,
+                lineNumber: 246,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/budget/[year]/[month]/page.tsx",
-        lineNumber: 208,
+        lineNumber: 207,
         columnNumber: 7
     }, this);
 }

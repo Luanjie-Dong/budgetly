@@ -2,8 +2,8 @@ import React from 'react';
 
 interface ChartDataProps {
   currentData: {
-    type: string;
-    category: string;
+    Type: string;
+    Category: string;
     spend: number;
     recieve: number
   }[];
@@ -12,17 +12,17 @@ interface ChartDataProps {
 export const generateChartData = (currentData: ChartDataProps['currentData']) => {
     const groupDataByCategory = (data: typeof currentData, targetCategory: string) => {
         const grouped = data
-          .filter((item) => item.category === targetCategory) 
+          .filter((item) => item.Category === targetCategory) 
           .reduce((summary, item) => {
-            if (!summary[item.type]) {
-              summary[item.type] = 0;
+            if (!summary[item.Type]) {
+              summary[item.Type] = 0;
             }
 
             if (targetCategory == "Income" || targetCategory == "Offset"){
-                summary[item.type] += item.recieve;
+                summary[item.Type] += item.recieve;
             }
             else{   
-                summary[item.type] += item.spend;
+                summary[item.Type] += item.spend;
             }
             
             return summary;

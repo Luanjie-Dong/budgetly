@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 
 interface transaction{
-  category:string,
+  Category:string,
   information:string,
-  type:string,
+  Type:string,
   date: Date,
   recieve: number,
   spend:number
@@ -40,7 +40,7 @@ export default function Budget({ params }: BudgetPageProps) {
     const [monthlyBudget,setMonthlyBudget] = useState<monthly[]>([])
 
     
-    const transactions_endpoint = "http://127.0.0.1:1000/get-transactions"
+    const transactions_endpoint = "http://127.0.0.1:1000/transactions"
 
     const handleViewDetails = (month: string, year:number) => {
       router.push(`/budget/${year}/${month}?year=${year}`);
@@ -86,9 +86,12 @@ export default function Budget({ params }: BudgetPageProps) {
     },[selectedYear]);
 
     useEffect(() => {
+      
       const total_spend = transactionData.reduce((total, item) => total + item.spend, 0);
       const total_receive = transactionData.reduce((total, item) => total + item.recieve, 0);
       const total_balance = total_receive - total_spend;
+      console.log(transactionData)
+      console.log(total_balance)
     
       setYearlyBudget([
         { name: "Total Spent", amount: total_spend },
@@ -112,11 +115,11 @@ export default function Budget({ params }: BudgetPageProps) {
           acc[formattedMonth] = { recieve: 0, spend: 0 };
         }
         
-        if (item.category == "Spending"){
+        if (item.Category == "Spending"){
           acc[formattedMonth].spend += item.spend;
         }
           
-        if (item.category == "Income"){
+        if (item.Category == "Income"){
         acc[formattedMonth].recieve += item.recieve;}
         
       
