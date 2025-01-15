@@ -121,6 +121,9 @@ export default function Budget({ params }: BudgetPageProps) {
           
         if (item.Category == "Income"){
         acc[formattedMonth].recieve += item.recieve;}
+
+        if (item.Category == "Offset"){
+          acc[formattedMonth].spend -= item.recieve;}
         
       
         return acc;
